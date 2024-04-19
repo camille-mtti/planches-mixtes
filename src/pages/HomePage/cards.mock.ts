@@ -7,6 +7,7 @@ export const cards = [
     location: 'Paris 15',
     date: '19.04.2024',
     image: '/img/IMG_4549.jpg',
+    nbPersonnes: '2',
   },
   {
     id: 2,
@@ -16,6 +17,8 @@ export const cards = [
     location: 'Paris 19',
     date: '01.02.2024',
     image: '/img/IMG_5290.jpg',
+    nbPersonnes: '2',
+
   },
   {
     id: 3,
@@ -25,5 +28,7 @@ export const cards = [
     location: 'Paris 19',
     date: '03.04.2024',
     image: '/img/IMG_6579.jpg',
+    nbPersonnes: '2/3',
+
   }
 ]
