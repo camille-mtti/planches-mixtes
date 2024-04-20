@@ -5,26 +5,26 @@ import data from './data'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 const rootReducer = combineReducers({
-    data
+  data,
 })
 
 const persistedReducer = persistReducer(
-    {
-        key: 'root',
-        storage,
-        whitelist: ['data']
-    },
-    rootReducer
+  {
+    key: 'root',
+    storage,
+    whitelist: ['data'],
+  },
+  rootReducer
 )
 
 export const store = configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-            }
-        })
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 })
 
 export type RootState = ReturnType<typeof store.getState>
