@@ -74,7 +74,7 @@ query MyQuery {
     planches_ingredients {
       ingredient {
         name
-        type
+        type_id
       }
     }
     restaurant {
