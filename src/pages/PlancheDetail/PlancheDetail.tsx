@@ -57,7 +57,7 @@ export const PlancheDetail = () => {
 
           </div>
 
-          <MapContainer style={{ maxWidth: '25vw', minWidth: '10vw', maxHeight: '30vh', minHeight: '20vh', marginTop: '16px' }} center={[48.84096908569336, 2.300666332244873]} zoom={15} scrollWheelZoom={false}>
+          <MapContainer style={{ maxWidth: '25vw', minWidth: '10vw', maxHeight: '50vh', minHeight: '40vh', marginTop: '16px' }} center={[48.84096908569336, 2.300666332244873]} zoom={15} scrollWheelZoom={false}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

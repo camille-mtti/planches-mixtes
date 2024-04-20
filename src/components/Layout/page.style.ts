@@ -3,7 +3,7 @@ import { COLORS } from "~/libs/style/foundations";
 export const headerStyle: React.CSSProperties = {
   textAlign: 'center',
   display: 'grid',
-  gridTemplateColumns:' repeat(3, minmax(0, 1fr))',
+  gridTemplateColumns:'minmax(0, 1fr) minmax(0, 3fr)',
   paddingLeft: '48px',
   paddingRight: '48px',
   backgroundColor: COLORS.BACKGROUND_COLOR

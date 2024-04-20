@@ -3,7 +3,9 @@ import '@fontsource-variable/source-code-pro';
 export const COLORS = {
   BACKGROUND_COLOR :"#fdfcf8",
   PRIMARY_COLOR :"#3d5913",
-  TEXT_COLOR: '#000000',
+  ACCENT_COLOR: "#B46034",
+  SECONDARY_COLOR: '#28311B',
+  TEXT_COLOR: '#050315',
   TEXT_COLOR_LIGHT: '#ffffff',
 }
 
