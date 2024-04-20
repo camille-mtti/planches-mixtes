@@ -2,10 +2,14 @@ import React from 'react'
 import { PlancheCard } from '~/components/PlancheCard/PlancheCard'
 import { Page } from '~/components/Layout/Page'
 import { cards } from './cards.mock'
+import { useQuery } from '@apollo/client'
+import { fetchPlanches } from '~/api/database/planches'
 
 
 
 const HomePage: React.FC = () => {
+  const { loading, error, data } = useQuery(fetchPlanches);
+  console.log({ data, loading, error })
   return (
     <Page>
       <div style={{
