@@ -12,7 +12,7 @@ import { FetchPlancheByIdResponse, fetchPlancheById } from '~/api/database/planc
 import { useNavigate, useParams } from 'react-router-dom'
 import { LoadingPage } from '../LoadingPage/LoadingPage'
 import { useMemo } from 'react'
-import { INGREDIENT_MAP, IngredientTypeKeys, formatIngredientsListByType } from '~/api/database/ingredients.mapper'
+import { formatIngredientsListByType } from '~/api/database/ingredients.mapper'
 import { PLANCHE_CATEGORY_MAP, PlancheCategoryKeys } from '~/api/database/plancheCategory.mapper'
 
 
@@ -135,9 +135,9 @@ export const PlancheDetail = () => {
 
           <ul>
             Composition :
-            {Object.keys(ingredients).map((ingredientType) => (
+            {Object.entries(ingredients).map(([ingredientType, ingredients]) => (
               <li key={ingredientType}>
-                {INGREDIENT_MAP[ingredientType as IngredientTypeKeys]} : {ingredients[ingredientType as IngredientTypeKeys].join(', ')}
+                {ingredientType} : {ingredients.join(', ')}
               </li>
             ))}
           </ul>

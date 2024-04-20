@@ -1,27 +1,19 @@
 
 type Ingredient =  {
-  name: string
-  type: string
-}
-export const formatIngredientsListByType = (ingredients?: {ingredient: Ingredient}[] ): Record<IngredientTypeKeys, string[]> => 
+  name: string,
+ingredient_type: {  name: string
+}}
+export const formatIngredientsListByType = (ingredients?: {ingredient: Ingredient}[] ): Record<string, string[]> => 
   ingredients?.reduce((acc, {ingredient}) => {
-    if (!acc[ingredient.type]) {
+    if (!acc[ingredient.ingredient_type.name]) {
       return {
         ...acc,
-        [ingredient.type]: [ingredient.name],
+        [ingredient.ingredient_type.name]: [ingredient.name],
       }
     }
 
     return {...acc,
-      [ingredient.type]: [...acc[ingredient.type], ingredient.name],
+      [ingredient.ingredient_type.name]: [...acc[ingredient.ingredient_type.name], ingredient.name],
     }
   }, {} as Record<string, string[]>) || {}
 
-  export type IngredientTypeKeys = keyof typeof INGREDIENT_MAP
-  export const INGREDIENT_MAP = {
-    fromage: 'Fromage',
-    charcuterie: 'Charcuterie',
-    legumes: 'Légumes',
-    autres: 'Autres',
-    dips: 'Dips et tartinades',
-  }

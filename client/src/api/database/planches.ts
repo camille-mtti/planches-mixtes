@@ -1,5 +1,4 @@
 import { gql } from '@apollo/client'
-import { IngredientTypeKeys } from './ingredients.mapper'
 import { PlancheCategoryKeys } from './plancheCategory.mapper'
 
 export const fetchPlanches = () => gql`
@@ -40,7 +39,9 @@ export type FetchPlancheByIdResponse = {
     planches_ingredients: {
       ingredient: {
         name: string
-        type: IngredientTypeKeys
+        ingredient_type: {
+          name: string
+        }
       }
     }[]
     restaurant: {
@@ -74,7 +75,9 @@ query MyQuery {
     planches_ingredients {
       ingredient {
         name
-        type_id
+        ingredient_type {
+          name
+        }
       }
     }
     restaurant {
