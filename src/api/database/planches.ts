@@ -1,4 +1,6 @@
 import { gql } from '@apollo/client'
+import { IngredientTypeKeys } from './ingredients.mapper'
+import { PlancheCategoryKeys } from './plancheCategory.mapper'
 
 export const fetchPlanches = () => gql`
   query fetchPlanches {
@@ -24,9 +26,42 @@ export const fetchPlanches = () => gql`
 `
 
 type FetchPlancheByIdParams = { id?: number }
+export type FetchPlancheByIdResponse = {
+  planches: {
+    category: string
+    visit_date: string
+    id: number
+    name: string
+    price: number
+    number_people: number
+    planche_category: {
+      name: PlancheCategoryKeys
+    }
+    planches_ingredients: {
+      ingredient: {
+        name: string
+        type: IngredientTypeKeys
+      }
+    }[]
+    restaurant: {
+      address: string
+      city: string
+      google_maps_link: string
+      id: number
+      latitude: number
+      longitude: number
+      name: string
+      opening_hours: string
+      phone_number: string
+      website?: string
+      zipcode: number
+    }
+  }[]
+}
+
 export const fetchPlancheById = ({ id }: FetchPlancheByIdParams) => gql`
 query MyQuery {
-  planches(where: {id: {_eq: ${id}}}) {
+  planches(where: {id: {_eq: ${id}}}, limit: 1) {
     category
     visit_date
     id
@@ -52,6 +87,8 @@ query MyQuery {
       name
       opening_hours
       phone_number
+      website
+      zipcode
     }
   }
 }
