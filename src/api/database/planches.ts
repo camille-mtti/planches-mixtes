@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 
-export const fetchPlanches = gql`
+export const fetchPlanches = () => gql`
 query fetchPlanches {
   planches {
     category
@@ -24,14 +24,25 @@ query fetchPlanches {
 }
 `
 
-/***
- * query MyQuery {
-  planches {
+type FetchPlancheByIdParams = { id?: number}
+export const fetchPlancheById = ({id}: FetchPlancheByIdParams) => gql`
+query MyQuery {
+  planches(where: {id: {_eq: ${id}}}) {
     category
     visit_date
     id
     name
     price
+    number_people
+    planche_category {
+      name
+    }
+    planches_ingredients {
+      ingredient {
+        name
+        type
+      }
+    }
     restaurant {
       address
       city
@@ -44,14 +55,5 @@ query fetchPlanches {
       phone_number
     }
   }
-  planches_ingredients {
-    ingredient {
-      name
-      ingredient_type {
-        name
-      }
-    }
-  }
 }
-
-*/
+`

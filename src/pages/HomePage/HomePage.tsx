@@ -8,8 +8,7 @@ import { fetchPlanches } from '~/api/database/planches'
 
 
 const HomePage: React.FC = () => {
-  const { loading, error, data } = useQuery(fetchPlanches);
-  console.log({ data, loading, error })
+  const { loading, error, data } = useQuery(fetchPlanches());
   return (
     <Page>
       <div style={{

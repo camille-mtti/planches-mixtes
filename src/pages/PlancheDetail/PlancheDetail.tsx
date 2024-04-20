@@ -8,12 +8,18 @@ import { Image, Typography } from "antd";
 
 import 'leaflet/dist/leaflet.css';
 import { Page } from "~/components/Layout/Page";
+import { useQuery } from "@apollo/client";
+import { fetchPlancheById } from "~/api/database/planches";
+import { useParams } from "react-router-dom";
 
 const card = cards[0]
 
 
 export const PlancheDetail = () => {
+  const { id } = useParams();
 
+  const { loading, data, error } = useQuery(fetchPlancheById({ id: id ? parseInt(id) : undefined }))
+  console.log(data)
   const { name, plancheCategory, price, date, image, location, nbPersonnes } = card
   return (
     <Page>
