@@ -4,15 +4,14 @@ import { Header } from './Header'
 import { contentStyle, footerStyle, layoutStyle } from './page.style'
 
 type PageProps = {
-  children: React.ReactNode
+    children: React.ReactNode
 }
 export const Page = ({ children }: PageProps) => {
-  return (
-    <Layout style={layoutStyle}>
-      <Header />
-      {children}
-      <Footer style={footerStyle}>Footer</Footer>
-    </Layout>
-
-  )
+    return (
+        <Layout style={layoutStyle}>
+            <Header />
+            {children}
+            <Footer style={footerStyle}>Footer</Footer>
+        </Layout>
+    )
 }

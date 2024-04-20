@@ -9,19 +9,20 @@ import { PlancheDetail } from './pages/PlancheDetail/PlancheDetail'
 
 const RootComponent: React.FC = () => {
     return (
-        <ConfigProvider theme={{
-            "token": {
-                "colorBgBase": COLORS.BACKGROUND_COLOR,
-                "colorPrimary": COLORS.PRIMARY_COLOR,
-                "fontFamily": DEFAULT_FONT_FAMILY
-            }
-        }}>
+        <ConfigProvider
+            theme={{
+                token: {
+                    colorBgBase: COLORS.BACKGROUND_COLOR,
+                    colorPrimary: COLORS.PRIMARY_COLOR,
+                    fontFamily: DEFAULT_FONT_FAMILY
+                }
+            }}
+        >
             <Router>
                 <Routes>
                     <Route path="*" element={<NotFoundPage />} />
                     <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
                     <Route path={ROUTES.PLANCHE_DETAIL_ROUTE} element={<PlancheDetail />} />
-
                 </Routes>
             </Router>
         </ConfigProvider>

@@ -31,7 +31,7 @@
         "test": "jest",
         "test:coverage": "jest --silent --watchAll=false --coverage",
         "lint": "eslint --cache .",
-        "format": "prettier --check ."
+        "format": "prettier --write ."
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -48,6 +48,7 @@
         "@types/react-dom": "^18.2.22",
         "@types/react-redux": "^7.1.33",
         "@vitejs/plugin-react": "^4.2.1",
+        "prettier": "^3.2.5",
         "ts-jest": "^29.1.2",
         "typescript": "^5.4.3",
         "vite": "^5.2.4",
