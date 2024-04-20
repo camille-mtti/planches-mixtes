@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import buildHasuraProvider from 'ra-data-hasura';
 import { Admin, DataProvider, Resource } from 'react-admin';
 import { RestaurantList } from './Restaurant/RestaurantList';
+import { IngredientList } from './Ingredient/IngredientList';
+import { IngredientCreate } from './Ingredient/IngredientCreate';
+import { IngredientEdit } from './Ingredient/IngredientEdit';
 
 
 export const App = () => {
@@ -32,6 +35,14 @@ export const App = () => {
         name="restaurants"
         list={RestaurantList}
       />
+      <Resource
+        name="ingredients"
+        list={IngredientList}
+        create={IngredientCreate}
+        edit={IngredientEdit}
+      />
+      <Resource name="ingredients_type" recordRepresentation="name" />
+
     </Admin>
   );
 };
