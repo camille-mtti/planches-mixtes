@@ -1,0 +1,13 @@
+{
+  "name": "planches-mixtes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:camille-mtti/planches-mixtes.git",
+  "author": "camille-mtti <camillemtti@gmail.com>",
+  "license": "MIT",
+
+  "scripts": {
+    "dev:client": "cd client && vite --port 3000 --open",
+    "dev:admin": "cd admin && vite --port 3001 --open"
+  }
+}
