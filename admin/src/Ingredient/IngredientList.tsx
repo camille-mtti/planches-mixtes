@@ -7,9 +7,7 @@ export const IngredientList = () => {
         <TextField source="id" />
         <TextField source="name" />
         <ReferenceField source="type_id" reference="ingredients_type" label="Type" />
-
       </Datagrid>
-
     </List>
   )
 };

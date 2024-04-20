@@ -1,11 +1,8 @@
-// Initialize the dataProvider before rendering react-admin resources.
 import { useState, useEffect } from 'react';
 import buildHasuraProvider from 'ra-data-hasura';
 import { Admin, DataProvider, Resource } from 'react-admin';
-import { RestaurantList } from './Restaurant/RestaurantList';
-import { IngredientList } from './Ingredient/IngredientList';
-import { IngredientCreate } from './Ingredient/IngredientCreate';
-import { IngredientEdit } from './Ingredient/IngredientEdit';
+import { ingredients } from './Ingredient';
+import { restaurants } from './Restaurant';
 
 
 export const App = () => {
@@ -33,13 +30,11 @@ export const App = () => {
     <Admin dataProvider={dataProvider}>
       <Resource
         name="restaurants"
-        list={RestaurantList}
+        {...restaurants}
       />
       <Resource
         name="ingredients"
-        list={IngredientList}
-        create={IngredientCreate}
-        edit={IngredientEdit}
+        {...ingredients}
       />
       <Resource name="ingredients_type" recordRepresentation="name" />
 
