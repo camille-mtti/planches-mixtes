@@ -1,6 +1,6 @@
 export const ROUTES = {
   HOMEPAGE_ROUTE: '/',
   PLANCHE_DETAIL_ROUTE: '/planches/:id',
-  CONTACT_ROUTE: '/contact',
+  REQUEST_ROUTE: '/request',
   PLANCHES_ROUTE: '/planches',
 }

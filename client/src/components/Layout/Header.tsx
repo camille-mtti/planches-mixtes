@@ -1,13 +1,33 @@
 import Menu, { MenuProps } from 'antd/es/menu/menu'
 import React, { useEffect, useState } from 'react'
 import { Header as AntdHeader } from 'antd/es/layout/layout'
-import { headerStyle, navigationMenuStyle } from './page.style'
 import { Typography } from 'antd'
 import { titleStyle } from '~/libs/style/global.styles'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '~/resources/routes-constants'
+import { COLORS } from '~/libs/style/foundations'
 
-const tabs = [
+
+export const headerStyle: React.CSSProperties = {
+  textAlign: 'center',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  paddingLeft: '48px',
+  paddingRight: '48px',
+  backgroundColor: COLORS.BACKGROUND_COLOR,
+  width: '100%',
+};
+
+export const navigationMenuStyle: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center', // Horizontally center the items
+  backgroundColor: 'transparent',
+  alignItems: 'center',
+};
+
+type routesKeys = 'home' | 'planches' | 'request'
+const tabs: {label: string, key: routesKeys}[] = [
   {
     label: 'Accueil',
     key: 'home',
@@ -17,16 +37,15 @@ const tabs = [
     key: 'planches',
   },
   {
-    label: 'Contact',
-    key: 'contact',
+    label: 'Proposer une planche',
+    key: 'request',
   },
 ]
 
-type routesKeys = 'home' | 'planches' | 'contact'
 const routesMapper = {
   home: ROUTES.HOMEPAGE_ROUTE,
   planches: ROUTES.PLANCHES_ROUTE,
-  contact: ROUTES.CONTACT_ROUTE,
+  request: ROUTES.REQUEST_ROUTE,
 }
 
 export const Header = () => {
@@ -42,16 +61,17 @@ export const Header = () => {
   return (
     <AntdHeader style={headerStyle}>
       <div
+      style={{width: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8, cursor: 'pointer'}}
         onClick={() => {
           navigate('/')
         }}
       >
-        <Typography.Title level={3} style={titleStyle}>
-          planches-mixtes.com
-        </Typography.Title>
+        <img src='/img/logo.png' alt='logo' style={{ width: '80px' }} />
+        <Typography.Text>planches-mixtes.com</Typography.Text>
       </div>
 
       <Menu style={navigationMenuStyle} onClick={onClick} selectedKeys={[currentTab]} mode="horizontal" items={tabs} />
+      <div  style={{width: '300px'}}/>
     </AntdHeader>
   )
 }

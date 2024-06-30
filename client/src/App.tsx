@@ -6,7 +6,6 @@ import { persistor, store } from './store/reducers/store'
 
 import { ApolloClient, ApolloProvider, InMemoryCache, HttpLink } from '@apollo/client'
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev'
-import { message } from 'antd'
 
 const env = import.meta.env
 

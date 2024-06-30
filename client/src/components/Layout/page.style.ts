@@ -9,6 +9,11 @@ export const headerStyle: React.CSSProperties = {
   backgroundColor: COLORS.BACKGROUND_COLOR,
 }
 
+export const footerStyle: React.CSSProperties = {
+  textAlign: 'left',
+  backgroundColor: COLORS.PRIMARY_COLOR,
+}
+
 export const navigationMenuStyle: React.CSSProperties = {
   display: 'flex',
   backgroundColor: 'transparent',
@@ -26,10 +31,6 @@ export const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   minHeight: '120vh',
   lineHeight: '120px',
-}
-
-export const footerStyle: React.CSSProperties = {
-  textAlign: 'center',
 }
 
 export const layoutStyle: React.CSSProperties = {

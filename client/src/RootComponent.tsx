@@ -6,13 +6,13 @@ import { ROUTES } from './resources/routes-constants'
 import ConfigProvider from 'antd/es/config-provider'
 import { COLORS, DEFAULT_FONT_FAMILY } from './libs/style/foundations'
 import { PlancheDetail } from './pages/PlancheDetail/PlancheDetail'
+import { PlancheRequestPage } from './pages/PlancheRequestPage/PlancheRequestPage'
 
 const RootComponent: React.FC = () => {
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorBgBase: COLORS.BACKGROUND_COLOR,
           colorPrimary: COLORS.PRIMARY_COLOR,
           fontFamily: DEFAULT_FONT_FAMILY,
         },
@@ -23,6 +23,7 @@ const RootComponent: React.FC = () => {
           <Route path="*" element={<NotFoundPage />} />
           <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
           <Route path={ROUTES.PLANCHE_DETAIL_ROUTE} element={<PlancheDetail />} />
+          <Route path={ROUTES.REQUEST_ROUTE} element={<PlancheRequestPage />} />
         </Routes>
       </Router>
     </ConfigProvider>

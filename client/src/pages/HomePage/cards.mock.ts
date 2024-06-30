@@ -1,3 +1,5 @@
+import {getImageHttpsReference} from '../../libs/firebase/firebase'
+
 export const cards = [
   {
     id: 1,
@@ -16,7 +18,7 @@ export const cards = [
     price: '20€',
     location: 'Paris 19',
     date: '01.02.2024',
-    image: '/img/IMG_5290.jpg',
+    image: await getImageHttpsReference( 'planches/IMG_5290.jpg'),
     nbPersonnes: '2',
   },
   {
