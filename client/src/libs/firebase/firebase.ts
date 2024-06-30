@@ -15,6 +15,6 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 
 const storage = getStorage()
-console.log({storage})
+
 export const getHttpsReference =(url: string)=> ref(storage, url);  
 export const getImageHttpsReference = (url: string) => getDownloadURL(ref(storage, url))
