@@ -3,6 +3,7 @@ import buildHasuraProvider from 'ra-data-hasura';
 import { Admin, DataProvider, Resource } from 'react-admin';
 import { ingredients } from './Ingredient';
 import { restaurants } from './Restaurant';
+import { planches } from './Planche';
 
 
 export const App = () => {
@@ -30,13 +31,20 @@ export const App = () => {
     <Admin dataProvider={dataProvider}>
       <Resource
         name="restaurants"
+        recordRepresentation="name"
         {...restaurants}
       />
       <Resource
         name="ingredients"
+        recordRepresentation="name" 
         {...ingredients}
       />
       <Resource name="ingredients_type" recordRepresentation="name" />
+      <Resource name="planche_categories" recordRepresentation="name" />
+
+      <Resource name="planches" 
+      {...planches} />
+
 
     </Admin>
   );
