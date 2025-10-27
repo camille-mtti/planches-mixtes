@@ -126,10 +126,19 @@ export const PlancheDetail = () => {
             paddingBottom: '16px',
           }}
         >
-          <Image width={450} height={600} src={cards[0].image} preview={false} />
+          <Image 
+            width={450} 
+            height={600} 
+            src={
+              currentPlanche.planche_images?.find(img => img.is_default)?.url || 
+              currentPlanche.planche_images?.[0]?.url || 
+              '/img/logo.png'
+            } 
+            preview={false} 
+          />
           <h1 style={TYPOGRAPHY.H1}>{currentPlanche.name || currentPlanche.restaurant.name}</h1>
           <div style={TYPOGRAPHY.SUB_TITLE}>
-            {PLANCHE_CATEGORY_MAP[currentPlanche.category as PlancheCategoryKeys]}, {currentPlanche.price} € pour {currentPlanche.number_people} personnes
+            {PLANCHE_CATEGORY_MAP[currentPlanche.planche_category.name as PlancheCategoryKeys]}, {currentPlanche.price} € pour {currentPlanche.number_people} personnes
           </div>
           <div>Visité le {currentPlanche.visit_date}</div>
 

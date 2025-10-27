@@ -17,8 +17,9 @@ query fetchPlanches {
     visit_date
     price
     number_people
-    planche_images(where: {is_default: {_eq: true}}) {
+    planche_images {
       url
+      is_default
     }
   }
 }
@@ -40,8 +41,9 @@ query fetchPlanchesWithIngredients {
       city
       address
     }
-    planche_images(where: {is_default: {_eq: true}}) {
+    planche_images {
       url
+      is_default
     }
     planches_ingredients {
       ingredient {
@@ -67,6 +69,10 @@ export type FetchPlancheByIdResponse = {
     planche_category: {
       name: PlancheCategoryKeys
     }
+    planche_images: {
+      url: string
+      is_default: boolean
+    }[]
     planches_ingredients: {
       ingredient: {
         name: string
@@ -101,6 +107,10 @@ query MyQuery {
     number_people
     planche_category {
       name
+    }
+    planche_images {
+      url
+      is_default
     }
     planches_ingredients {
       ingredient {

@@ -1,13 +1,35 @@
-import { AutocompleteArrayInput, AutocompleteInput, Create, DateInput, NumberInput, ReferenceArrayInput, ReferenceInput, SimpleForm, TextInput, required } from "react-admin"
+import { AutocompleteArrayInput, AutocompleteInput, Create, DateInput, NumberInput, ReferenceArrayInput, ReferenceInput, SimpleForm, TextInput, required, useNotify, useRedirect } from "react-admin"
 import { useState } from "react"
 import { ImageUpload } from "../components/ImageUpload/ImageUpload"
+import { savePlancheImages } from "../api/graphql"
 
 export const PlancheCreate = () => {
   const [images, setImages] = useState<string[]>([])
   const [primaryImage, setPrimaryImage] = useState<string | null>(null)
+  const notify = useNotify()
+  const redirect = useRedirect()
+
+  const onSuccess = async (data: any) => {
+    const plancheId = data.id
+
+    // Save images to Hasura if any images were uploaded
+    if (images.length > 0) {
+      try {
+        await savePlancheImages(plancheId, images, primaryImage)
+        notify('Planche created with images successfully', { type: 'success' })
+      } catch (error) {
+        console.error('Error saving images:', error)
+        notify('Planche created but images failed to save', { type: 'warning' })
+      }
+    } else {
+      notify('Planche created successfully', { type: 'success' })
+    }
+
+    redirect('list', 'planches')
+  }
 
   return (
-    <Create>
+    <Create mutationOptions={{ onSuccess }}>
       <SimpleForm>
         <TextInput label="Nom" source="name" fullWidth />
         <NumberInput label="Price" source="price" validate={[required()]} fullWidth />

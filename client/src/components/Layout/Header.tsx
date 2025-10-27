@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Header as AntdHeader } from 'antd/es/layout/layout'
 import { Typography } from 'antd'
 import { titleStyle } from '~/libs/style/global.styles'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { ROUTES } from '~/resources/routes-constants'
 import { COLORS } from '~/libs/style/foundations'
 
@@ -48,10 +48,22 @@ const routesMapper = {
   request: ROUTES.REQUEST_ROUTE,
 }
 
+const routeToKey = (path: string): routesKeys => {
+  if (path === ROUTES.PLANCHES_ROUTE) return 'planches'
+  if (path === ROUTES.REQUEST_ROUTE) return 'request'
+  return 'home'
+}
+
 export const Header = () => {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [currentTab, setCurrentTab] = useState<routesKeys>('home')
+
+  // Update current tab when route changes
+  useEffect(() => {
+    setCurrentTab(routeToKey(location.pathname))
+  }, [location.pathname])
 
   const onClick: MenuProps['onClick'] = (e) => {
     setCurrentTab(e.key as routesKeys)

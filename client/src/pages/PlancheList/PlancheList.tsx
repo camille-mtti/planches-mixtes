@@ -27,6 +27,7 @@ type PlancheWithIngredients = {
   }
   planche_images: {
     url: string
+    is_default: boolean
   }[]
   planches_ingredients: {
     ingredient: {
@@ -182,7 +183,12 @@ export const PlancheList = () => {
             </div>
           ) : (
             <Row gutter={[20, 20]}>
-              {filteredPlanches.map((planche) => (
+              {filteredPlanches.map((planche) => {
+              // Find primary image or use first image
+              const primaryImage = planche.planche_images?.find(img => img.is_default) || planche.planche_images?.[0]
+              const imageUrl = primaryImage?.url || '/img/logo.png'
+              
+              return (
                 <Col key={planche.id} xs={24} sm={12} md={8} lg={6}>
                   <PlancheCard
                     id={planche.id}
@@ -190,11 +196,12 @@ export const PlancheList = () => {
                     category={PLANCHE_CATEGORY_MAP[planche.planche_category.name]}
                     price={`${planche.price}€`}
                     date={planche.visit_date}
-                    image={planche.planche_images[0]?.url || '/img/logo.png'}
+                    image={imageUrl}
                     location={`${planche.restaurant.name}, ${planche.restaurant.city}`}
                   />
                 </Col>
-              ))}
+              )
+            })}
             </Row>
           )}
         </div>
