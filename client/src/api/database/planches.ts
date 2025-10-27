@@ -4,6 +4,7 @@ import { PlancheCategoryKeys } from './plancheCategory.mapper'
 export const fetchPlanches = () => gql`
 query fetchPlanches {
   planches {
+    id
     planche_category {
       name
     }
@@ -18,6 +19,37 @@ query fetchPlanches {
     number_people
     planche_images(where: {is_default: {_eq: true}}) {
       url
+    }
+  }
+}
+`
+
+export const fetchPlanchesWithIngredients = () => gql`
+query fetchPlanchesWithIngredients {
+  planches {
+    id
+    name
+    price
+    number_people
+    visit_date
+    planche_category {
+      name
+    }
+    restaurant {
+      name
+      city
+      address
+    }
+    planche_images(where: {is_default: {_eq: true}}) {
+      url
+    }
+    planches_ingredients {
+      ingredient {
+        name
+        ingredient_type {
+          name
+        }
+      }
     }
   }
 }

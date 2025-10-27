@@ -7,7 +7,7 @@
   "license": "MIT",
 
   "scripts": {
-    "dev:client": "cd client && vite --port 3000 --open",
-    "dev:admin": "cd admin && vite --port 3001 --open"
+    "dev:client": "cd client && npx vite --port 3000 --open",
+    "dev:admin": "cd admin && npx vite --port 3001 --open"
   }
 }

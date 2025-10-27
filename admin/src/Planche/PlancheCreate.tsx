@@ -1,6 +1,11 @@
 import { AutocompleteArrayInput, AutocompleteInput, Create, DateInput, NumberInput, ReferenceArrayInput, ReferenceInput, SimpleForm, TextInput, required } from "react-admin"
+import { useState } from "react"
+import { ImageUpload } from "../components/ImageUpload/ImageUpload"
 
 export const PlancheCreate = () => {
+  const [images, setImages] = useState<string[]>([])
+  const [primaryImage, setPrimaryImage] = useState<string | null>(null)
+
   return (
     <Create>
       <SimpleForm>
@@ -17,6 +22,17 @@ export const PlancheCreate = () => {
         <ReferenceArrayInput label="Ingredients" source="ingredients" reference="ingredients">
           <AutocompleteArrayInput label='Ingredients' />
         </ReferenceArrayInput>
+        
+        <div style={{ marginTop: '24px' }}>
+          <h3>Planche Images</h3>
+          <ImageUpload
+            images={images}
+            onImagesChange={setImages}
+            onPrimaryImageChange={setPrimaryImage}
+            primaryImage={primaryImage}
+            maxImages={10}
+          />
+        </div>
       </SimpleForm>
     </Create>
   );

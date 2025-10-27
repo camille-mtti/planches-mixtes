@@ -7,6 +7,7 @@ import ConfigProvider from 'antd/es/config-provider'
 import { COLORS, DEFAULT_FONT_FAMILY } from './libs/style/foundations'
 import { PlancheDetail } from './pages/PlancheDetail/PlancheDetail'
 import { PlancheRequestPage } from './pages/PlancheRequestPage/PlancheRequestPage'
+import { PlancheList } from './pages/PlancheList/PlancheList'
 
 const RootComponent: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const RootComponent: React.FC = () => {
           <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
           <Route path={ROUTES.PLANCHE_DETAIL_ROUTE} element={<PlancheDetail />} />
           <Route path={ROUTES.REQUEST_ROUTE} element={<PlancheRequestPage />} />
+          <Route path={ROUTES.PLANCHES_ROUTE} element={<PlancheList />} />
         </Routes>
       </Router>
     </ConfigProvider>

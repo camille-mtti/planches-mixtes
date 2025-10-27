@@ -1,6 +1,15 @@
-import { Edit, SimpleForm, TextInput, NumberInput, required, DateInput, ReferenceInput, AutocompleteInput } from "react-admin";
+import { Edit, SimpleForm, TextInput, NumberInput, required, DateInput, ReferenceInput, AutocompleteInput, useGetOne } from "react-admin";
+import { useState, useEffect } from "react"
+import { ImageUpload } from "../components/ImageUpload/ImageUpload"
 
 export const PlancheEdit = () => {
+  const [images, setImages] = useState<string[]>([])
+  const [primaryImage, setPrimaryImage] = useState<string | null>(null)
+
+  // Note: You'll need to fetch existing images from your data source
+  // This is a placeholder - you'll need to implement the actual data fetching
+  // based on your Hasura schema
+
   return (
     <Edit>
       <SimpleForm>
@@ -14,6 +23,17 @@ export const PlancheEdit = () => {
         <ReferenceInput label="Restaurant" source="restaurant_id" reference="restaurants">
           <AutocompleteInput label='Restaurant' />
         </ReferenceInput>
+        
+        <div style={{ marginTop: '24px' }}>
+          <h3>Planche Images</h3>
+          <ImageUpload
+            images={images}
+            onImagesChange={setImages}
+            onPrimaryImageChange={setPrimaryImage}
+            primaryImage={primaryImage}
+            maxImages={10}
+          />
+        </div>
       </SimpleForm>
     </Edit>
   );

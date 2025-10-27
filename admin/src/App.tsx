@@ -4,7 +4,8 @@ import { Admin, DataProvider, Resource } from 'react-admin';
 import { ingredients } from './Ingredient';
 import { restaurants } from './Restaurant';
 import { planches } from './Planche';
-
+import { AuthGuard } from './auth/AuthGuard';
+import { authProvider } from './auth/authProvider';
 
 export const App = () => {
   const [dataProvider, setDataProvider] = useState<DataProvider | null>(null);
@@ -16,7 +17,6 @@ export const App = () => {
           uri: import.meta.env.VITE_HASURA_GRAPHQL_URL,
           headers: {
             'x-hasura-admin-secret': import.meta.env.VITE_HASURA_GRAPHQL_ADMIN_SECRET,
-
           }
         },
       });
@@ -28,25 +28,25 @@ export const App = () => {
   if (!dataProvider) return <p>Loading...</p>;
 
   return (
-    <Admin dataProvider={dataProvider}>
-      <Resource
-        name="restaurants"
-        recordRepresentation="name"
-        {...restaurants}
-      />
-      <Resource
-        name="ingredients"
-        recordRepresentation="name" 
-        {...ingredients}
-      />
-      <Resource name="ingredients_type" recordRepresentation="name" />
-      <Resource name="planche_categories" recordRepresentation="name" />
+    <AuthGuard>
+      <Admin dataProvider={dataProvider} authProvider={authProvider}>
+        <Resource
+          name="restaurants"
+          recordRepresentation="name"
+          {...restaurants}
+        />
+        <Resource
+          name="ingredients"
+          recordRepresentation="name" 
+          {...ingredients}
+        />
+        <Resource name="ingredients_type" recordRepresentation="name" />
+        <Resource name="planche_categories" recordRepresentation="name" />
 
-      <Resource name="planches" 
-      {...planches} />
-
-
-    </Admin>
+        <Resource name="planches" 
+        {...planches} />
+      </Admin>
+    </AuthGuard>
   );
 };
 
