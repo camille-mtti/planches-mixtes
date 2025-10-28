@@ -7,6 +7,7 @@ import { Input, Select, Row, Col, Typography, Space } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import { LoadingPage } from '../LoadingPage/LoadingPage'
 import { PLANCHE_CATEGORY_MAP, PlancheCategoryKeys } from '~/api/database/plancheCategory.mapper'
+import { COLORS } from '~/libs/style/foundations'
 
 const { Title } = Typography
 const { Option } = Select
@@ -101,95 +102,144 @@ export const PlancheList = () => {
 
   return (
     <Page>
-      <div style={{ padding: '20px' }}>
-        <Title level={1} style={{ textAlign: 'center', marginBottom: '40px' }}>
-          Liste des Planches
-        </Title>
-
-        {/* Search and Filter Section */}
+      <div style={{ 
+        padding: '40px 20px',
+        maxWidth: '1400px',
+        margin: '0 auto'
+      }}>
+        {/* Hero Section */}
         <div style={{ 
-          marginBottom: '40px', 
-          padding: '20px', 
-          backgroundColor: '#f5f5f5', 
-          borderRadius: '8px' 
+          textAlign: 'center', 
+          marginBottom: '60px',
+          paddingTop: '40px'
         }}>
+          <Title level={1} style={{ 
+            marginBottom: '16px',
+            fontSize: '48px',
+            fontWeight: 700,
+            color: COLORS.PRIMARY_COLOR
+          }}>
+            Découvrez les Meilleures Planches Mixtes
+          </Title>
+          <Typography.Text style={{ 
+            fontSize: '20px',
+            color: COLORS.SECONDARY_COLOR,
+            display: 'block',
+            marginBottom: '32px'
+          }}>
+            Explorez notre collection de planches authentiques dans les meilleurs restaurants
+          </Typography.Text>
+        </div>
+
+        {/* Search and Filter Section - Improved Design */}
+        <div style={{ 
+          marginBottom: '50px',
+          padding: '32px',
+          background: 'linear-gradient(135deg, #3d5913 0%, #5a7a1f 100%)',
+          borderRadius: '16px',
+          boxShadow: '0 10px 40px rgba(61, 89, 19, 0.2)'
+        }}>
+          <Title level={3} style={{ 
+            color: 'white', 
+            marginBottom: '24px',
+            fontWeight: 600
+          }}>
+            🔍 Trouvez votre planche idéale
+          </Title>
+          
           <Row gutter={[16, 16]}>
-            <Col xs={24} sm={12} md={8}>
-              <Space direction="vertical" style={{ width: '100%' }}>
-                <label>Rechercher par nom :</label>
-                <Input
-                  placeholder="Nom de la planche ou restaurant"
-                  prefix={<SearchOutlined />}
-                  value={nameSearch}
-                  onChange={(e) => setNameSearch(e.target.value)}
-                  allowClear
-                />
-              </Space>
+            <Col xs={24} sm={24} md={8}>
+              <Input
+                size="large"
+                placeholder="Nom de la planche ou restaurant..."
+                prefix={<SearchOutlined style={{ color: '#3d5913' }} />}
+                value={nameSearch}
+                onChange={(e) => setNameSearch(e.target.value)}
+                allowClear
+                style={{ 
+                  borderRadius: '8px',
+                  backgroundColor: 'white'
+                }}
+              />
             </Col>
             
-            <Col xs={24} sm={12} md={8}>
-              <Space direction="vertical" style={{ width: '100%' }}>
-                <label>Rechercher par ingrédient :</label>
-                <Select
-                  placeholder="Sélectionner un ingrédient"
-                  value={ingredientSearch}
-                  onChange={setIngredientSearch}
-                  allowClear
-                  showSearch
-                  style={{ width: '100%' }}
-                  filterOption={(input, option) =>
-                    (option?.label as string)?.toLowerCase().includes(input.toLowerCase())
-                  }
-                >
-                  {allIngredients.map(ingredient => (
-                    <Option key={ingredient} value={ingredient}>
-                      {ingredient}
-                    </Option>
-                  ))}
-                </Select>
-              </Space>
+            <Col xs={24} sm={24} md={8}>
+              <Select
+                size="large"
+                placeholder="Rechercher par ingrédient..."
+                value={ingredientSearch}
+                onChange={setIngredientSearch}
+                allowClear
+                showSearch
+                style={{ width: '100%' }}
+                filterOption={(input, option) =>
+                  (option?.label as string)?.toLowerCase().includes(input.toLowerCase())
+                }
+              >
+                {allIngredients.map(ingredient => (
+                  <Option key={ingredient} value={ingredient}>
+                    {ingredient}
+                  </Option>
+                ))}
+              </Select>
             </Col>
 
-            <Col xs={24} sm={12} md={8}>
-              <Space direction="vertical" style={{ width: '100%' }}>
-                <label>Filtrer par catégorie :</label>
-                <Select
-                  placeholder="Toutes les catégories"
-                  value={categoryFilter}
-                  onChange={setCategoryFilter}
-                  allowClear
-                  style={{ width: '100%' }}
-                >
-                  {Object.entries(PLANCHE_CATEGORY_MAP).map(([key, value]) => (
-                    <Option key={key} value={key}>
-                      {value}
-                    </Option>
-                  ))}
-                </Select>
-              </Space>
+            <Col xs={24} sm={24} md={8}>
+              <Select
+                size="large"
+                placeholder="Toutes les catégories"
+                value={categoryFilter}
+                onChange={setCategoryFilter}
+                allowClear
+                style={{ width: '100%' }}
+              >
+                {Object.entries(PLANCHE_CATEGORY_MAP).map(([key, value]) => (
+                  <Option key={key} value={key}>
+                    {value}
+                  </Option>
+                ))}
+              </Select>
             </Col>
           </Row>
         </div>
 
-        {/* Results Section */}
+        {/* Results Section - Improved Design */}
         <div>
-          <Title level={3}>
-            {filteredPlanches.length} planche{filteredPlanches.length !== 1 ? 's' : ''} trouvée{filteredPlanches.length !== 1 ? 's' : ''}
-          </Title>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '32px'
+          }}>
+            <Title level={3} style={{ margin: 0, color: COLORS.PRIMARY_COLOR }}>
+              {filteredPlanches.length} {filteredPlanches.length !== 1 ? 'planches trouvées' : 'planche trouvée'}
+            </Title>
+          </div>
 
           {filteredPlanches.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '40px' }}>
-              <Title level={4}>Aucune planche ne correspond à vos critères de recherche</Title>
+            <div style={{ 
+              textAlign: 'center', 
+              padding: '80px 40px',
+              background: COLORS.BACKGROUND_COLOR,
+              borderRadius: '16px'
+            }}>
+              <div style={{ fontSize: '64px', marginBottom: '20px' }}>🔍</div>
+              <Title level={3} style={{ color: COLORS.SECONDARY_COLOR, marginBottom: '8px' }}>
+                Aucune planche trouvée
+              </Title>
+              <Typography.Text style={{ color: COLORS.TEXT_COLOR }}>
+                Essayez de modifier vos critères de recherche
+              </Typography.Text>
             </div>
           ) : (
-            <Row gutter={[20, 20]}>
+            <Row gutter={[24, 24]}>
               {filteredPlanches.map((planche) => {
               // Find primary image or use first image
               const primaryImage = planche.planche_images?.find(img => img.is_default) || planche.planche_images?.[0]
               const imageUrl = primaryImage?.url || '/img/logo.png'
               
               return (
-                <Col key={planche.id} xs={24} sm={12} md={8} lg={6}>
+                <Col key={planche.id} xs={24} sm={12} md={8} lg={8}>
                   <PlancheCard
                     id={planche.id}
                     title={planche.name}

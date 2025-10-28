@@ -1,4 +1,6 @@
-import '@fontsource-variable/source-code-pro'
+import '@fontsource/dm-sans/400.css'
+import '@fontsource/dm-sans/500.css'
+import '@fontsource/dm-sans/700.css'
 
 export const COLORS = {
   BACKGROUND_COLOR: '#fdfcf8',
@@ -9,7 +11,7 @@ export const COLORS = {
   TEXT_COLOR_LIGHT: '#ffffff',
 }
 
-export const DEFAULT_FONT_FAMILY = 'Source Code Pro Variable'
+export const DEFAULT_FONT_FAMILY = '"DM Sans", sans-serif'
 
 export const TYPOGRAPHY = {
   H1: {

@@ -21,8 +21,9 @@ const RootComponent: React.FC = () => {
     >
       <Router>
         <Routes>
+          <Route path="/" element={<PlancheList />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
+          <Route path={ROUTES.HOMEPAGE_ROUTE} element={<PlancheList />} />
           <Route path={ROUTES.PLANCHE_DETAIL_ROUTE} element={<PlancheDetail />} />
           <Route path={ROUTES.REQUEST_ROUTE} element={<PlancheRequestPage />} />
           <Route path={ROUTES.PLANCHES_ROUTE} element={<PlancheList />} />

@@ -10,7 +10,7 @@ interface GraphQLResponse<T> {
   errors?: Array<{ message: string }>;
 }
 
-async function graphqlRequest<T>(query: string, variables?: any): Promise<T> {
+export async function graphqlRequest<T>(query: string, variables?: any): Promise<T> {
   const response = await fetch(graphqlEndpoint, {
     method: 'POST',
     headers,
@@ -84,7 +84,6 @@ export const fetchPlancheImages = async (plancheId: number) => {
     `;
 
     const result = await graphqlRequest<any>(query, { id: plancheId });
-    console.log('graphql',{result})
     return result.planches_by_pk?.planche_images || [];
   } catch (error) {
     console.error('Error fetching planche images:', error);

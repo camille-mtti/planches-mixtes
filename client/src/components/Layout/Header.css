@@ -1,0 +1,26 @@
+/* Custom header menu styling - light underline style */
+.custom-header-menu .ant-menu-item {
+  margin: 0 24px !important;
+  padding: 0 4px !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  transition: all 0.3s ease !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
+}
+
+.custom-header-menu .ant-menu-item:hover {
+  color: #3d5913 !important;
+  border-bottom: 2px solid rgba(61, 89, 19, 0.3) !important;
+}
+
+.custom-header-menu .ant-menu-item-selected {
+  background-color: transparent !important;
+  color: #3d5913 !important;
+  border-bottom: 2px solid #3d5913 !important;
+}
+
+.custom-header-menu .ant-menu-item-selected:hover {
+  border-bottom: 2px solid #3d5913 !important;
+}
+

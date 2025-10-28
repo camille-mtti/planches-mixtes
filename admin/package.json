@@ -10,14 +10,14 @@
     "format": "prettier --write ./src"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.9.2",
     "antd": "^5.27.6",
     "firebase": "^12.4.0",
-    "ra-data-graphql-simple": "^4.16.15",
-    "ra-data-hasura": "^0.6.1",
     "react": "^18.2.0",
-    "react-admin": "^4.16.0",
     "react-dom": "^18.2.0",
-    "react-dropzone": "^14.3.8"
+    "react-dropzone": "^14.3.8",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
     "@types/node": "^18.16.1",
